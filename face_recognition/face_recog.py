@@ -5,8 +5,8 @@ import cv2
 import camera
 import os
 import numpy as np
-import datetime
 import time
+import servo
 
 class FaceRecog():
     def __init__(self):
@@ -182,6 +182,46 @@ if __name__ == '__main__':
         f1_move_x, f1_move_y = face_recog.error_tolerance_frame()
         print("x좌표 : ", f1_move_x, ", ", "y좌표 : ", f1_move_y)
 
+        if (f1_move_x > 0) and (f1_move_y > 0):
+            move_x = abs(f1_move_x) // 100
+            move_y = abs(f1_move_y) // 100
+            while True:
+                f1_move_x, f1_move_y = face_recog.error_tolerance_frame()
+                if (f1_move_x == 0) and (f1_move_y == 0):
+                    break
+                Servo.rotate_left(move_x)
+                Servo.rotate_up(move_y)
+
+        elif (f1_move_x > 0) and (f1_move_y < 0):
+            move_x = abs(f1_move_x) // 100
+            move_y = abs(f1_move_y) // 100
+            while True:
+                f1_move_x, f1_move_y = face_recog.error_tolerance_frame()
+                if (f1_move_x == 0) and (f1_move_y == 0):
+                    break
+                Servo.rotate_left(move_x)
+                Servo.rotate_down(move_y)
+
+        elif (f1_move_x < 0) and (f1_move_y < 0):
+            move_x = abs(f1_move_x) // 100
+            move_y = abs(f1_move_y) // 100
+            while True:
+                f1_move_x, f1_move_y = face_recog.error_tolerance_frame()
+                if (f1_move_x == 0) and (f1_move_y == 0):
+                    break
+                Servo.rotate_right(move_x)
+                Servo.rotate_down(move_y)
+
+        elif (f1_move_x < 0) and (f1_move_y > 0):
+            move_x = abs(f1_move_x) // 100
+            move_y = abs(f1_move_y) // 100
+            while True:
+                f1_move_x, f1_move_y = face_recog.error_tolerance_frame()
+                if (f1_move_x == 0) and (f1_move_y == 0):
+                    break
+                Servo.rotate_right(move_x)
+                Servo.rotate_up(move_y)
+            
         # 오차허용프레임 반지름 값 변경하기
         f = open("error_tolerance_value.txt", 'r')
         data = f.read()
