@@ -5,6 +5,7 @@ import cv2
 import camera
 import os
 import numpy as np
+import datetime
 import time
 
 class FaceRecog():
