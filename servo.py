@@ -20,47 +20,33 @@ class Servo:
         self.kit = ServoKit(channels=16)
 
     # 서보모터 각도 변경 함수 (채널, 각도)
-    def set_angle(channel,ang):
+    def set_angle(self,channel,ang):
         self.kit.servo[channel].angle = ang
     
     # 서보모터 좌로 회전 (각도)
-    def rotate_left(ang):
+    def rotate_left(self,ang):
         self.ang_hor -= ang
         if self.ang_hor < self.ang_hor_min:
             self.ang_hor = self.ang_hor_min
         self.set_angle(0,self.ang_hor)
 
     # 서보모터 우로 회전 (각도)
-    def rotate_right(ang):
+    def rotate_right(self,ang):
         self.ang_hor += ang
         if self.ang_hor > self.ang_hor_max:
             self.ang_hor = self.ang_hor_max
         self.set_angle(0,self.ang_hor)
 
     # 서보모터 위로 회전 (각도)
-    def rotate_up(ang):
+    def rotate_up(self,ang):
         self.ang_ver += ang
         if self.ang_ver > self.ang_ver_max:
             self.ang_ver = self.ang_ver_max
-        self.set_angle(0,self.ang_hor)
+        self.set_angle(1,self.ang_ver)
 
     # 서보모터 아래로 회전 (각도)
-    def rotate_down(ang):
+    def rotate_down(self,ang):
         self.ang_ver -= ang
         if self.ang_ver < self.ang_ver_min:
             self.ang_ver = self.ang_ver_min
-        self.set_angle(0,self.ang_hor)
-
-# 서보모터 테스트용 코드
-sweep = range(ang_min,ang_max)
-sweep_inv = range(ang_max,ang_min,-1)
-
-while True:
-  for degree in sweep:
-	  set_angle(0,degree)
-	  set_angle(1,degree)
-	  time.sleep(0.01)
-  for degree in sweep_inv:
-    set_angle(0,degree)
-    set_angle(1,degree)
-    time.sleep(0.01)
+        self.set_angle(1,self.ang_ver)
