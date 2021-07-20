@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-
 import time
 import tkinter as tk
 import subprocess as sp
@@ -14,29 +11,38 @@ def record_stop():
     procA.terminate()
     procA = None
     
-def scale_val(val):
-    f = open("./val.txt",'w')
+def vertical_value(val):
+    f = open("./vertical_value.txt",'w')
     f.write(val)
     f.close()
     
-procA = None
 
+def horizontal_value(val):
+    f = open("./horizontal_value.txt",'w')
+    f.write(val)
+    f.close()
+    
 root = tk.Tk()
 
-root.geometry("640x640+100+100")  #너비X높이+X좌표+Y좌표
+root.title("Auto Tracking Video")
+root.geometry("1024x600+0+0")  #너비X높이+X좌표+Y좌표
 root.resizable(True, True)        #사이즈 변경 가능
 
-label1 = tk.Label(root, text="Auto Tracking Video",width=50,height=3)
-label1.pack(anchor=tk.CENTER, expand=True)
+scale1=tk.Scale(root, command=vertical_value, orient="vertical",showvalue=True, tickinterval=30,from_=0, to=432, length=432)
+scale1.set(216)
+scale1.grid(column=0, row=0)
 
-button1 = tk.Button(root, text="record_start",width=50,height=5 ,command=record_start)
-button1.pack(anchor=tk.CENTER, expand=True)
+button1 = tk.Button(root, text="record_start",width=20,height=3 ,command=record_start)
+button1.grid(column=0, row=1)
 
-button2 = tk.Button(root, text="record_stop",width=50,height=5 ,command=record_stop)
-button2.pack(anchor=tk.CENTER, expand=True)
+button2 = tk.Button(root, text="record_stop",width=20,height=3 ,command=record_stop)
+button2.grid(column=0, row=2)
 
-scale=tk.Scale(root, command=scale_val, orient="horizontal",showvalue=True, tickinterval=30,from_=60, to=360, length=360)
-scale.set(180)
-scale.pack()
+scale2=tk.Scale(root, command=horizontal_value, orient="horizontal",showvalue=True, tickinterval=30,from_=0, to=768, length=768)
+scale2.set(384)
+scale2.grid(column=1, row=2)
+
+
+
 
 root.mainloop()
