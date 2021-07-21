@@ -8,8 +8,8 @@ secs = time.time()
 tm = time.localtime(secs)
 start_time = str(tm.tm_year)+'-'+str(tm.tm_mon)+'-'+str(tm.tm_mday)+'-'+str(tm.tm_hour)+':'+str(tm.tm_min)+':'+str(tm.tm_sec)
 
-dispW = 960
-dispH = 540
+dispW = 768
+dispH = 432
 frame_rate = 10
 flip = 0
 
@@ -37,8 +37,12 @@ if not out.isOpened():
 img_itr = 0
 while True:
   ret, frame =  camera.read()
-
-  cv2.imshow('cam', frame)
+  
+  winname = "test"
+  cv2.namedWindow(winname)
+  cv2.moveWindow(winname,300,0)
+  cv2.imshow(winname, frame)
+  
   #cv2.imwrite('imgs/'+str(img_itr)+'.png', frame)
   out.write(frame)
   
