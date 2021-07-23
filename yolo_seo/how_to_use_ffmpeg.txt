@@ -1,0 +1,9 @@
+
+# 서버실행
+$ ffserver -f ffserver.conf
+
+# 카메라 촬영
+$ ffmpeg -f v4l2 -s 1280x720 -r 60 -i /dev/video0 http://localhost:8090/feed1.ffm
+
+# 사용할 소스
+$ http://localhost:8090/result.mjpg
