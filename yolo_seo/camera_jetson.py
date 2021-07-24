@@ -43,7 +43,9 @@ class VideoCamera(object):
         ret, frame = self.video.read()
         return frame
 
-        return frame
+    def is_open(self):
+        return self.video.isOpened()
+        
     def show_camera(self):
         if self.video.isOpened():
             window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
@@ -60,3 +62,4 @@ class VideoCamera(object):
                     break
         else:
             print("Unable to Use Camera")
+            
