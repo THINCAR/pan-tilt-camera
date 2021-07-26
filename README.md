@@ -3,18 +3,12 @@ pan-tilt-camera with face localization and tracking
 
 ## Module1 : Face_recognition
 
-### 1. 
+### 1. OpenCV Face_Recognition
 
 ### 2.
 
-### 3. Yolov5-face-detection
-* model : 
-    * yolov5n-0.5 : (ShuffleNetv2)
-    * yolov5n : (ShuffleNetv2)
-    * yolov5s : (CSPNet)
-* setting : 
-    * fps : 6
-    * size : 480x320px
+### 3. 
+
 ## Module2 : Servo
 * PWM 드라이버를 제어하여 서보모터의 pan, tilt 기능을 수행한다.
 * panning 각도 (0~180)
