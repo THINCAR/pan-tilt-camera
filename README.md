@@ -3,11 +3,7 @@ pan-tilt-camera with face localization and tracking
 
 ## Module1 : Face_recognition
 
-### 1. OpenCV Face_Recognition
-
-### 2.
-
-### 3. 
+* OpenCV Face_Recognition
 
 ## Module2 : Servo
 * PWM 드라이버를 제어하여 서보모터의 pan, tilt 기능을 수행한다.
